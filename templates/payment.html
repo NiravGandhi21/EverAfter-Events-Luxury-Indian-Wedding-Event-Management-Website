@@ -4,48 +4,56 @@
 
 {% block content %}
 <section class="page-intro">
-  <p class="eyebrow">Task 5 · Payment Gateway Integration</p>
+  <p class="eyebrow">EVERAFTER EVENTS · WEDDINGS & CELEBRATIONS</p>
   <h1>Reserve your date &amp;<br><em>celebration package.</em></h1>
   <p class="page-lede">
-    Demonstrating full-stack Razorpay test mode integration with real-time order generation and server-side HMAC-SHA256 signature verification.
+    Make your special day unforgettable with thoughtfully curated wedding experiences, personalized packages and a
+    seamless booking journey.
   </p>
 </section>
 
 <!-- Task 5 Demonstration Section -->
 <section class="section-pad">
-  
+
   <!-- Academic Demonstration Notice -->
-  <div style="background: #e9e3db; border-left: 4px solid var(--accent-terracotta); padding: 22px 28px; border-radius: 0 6px 6px 0; margin-bottom: 50px;">
+  <div
+    style="background: #e9e3db; border-left: 4px solid var(--accent-terracotta); padding: 22px 28px; border-radius: 0 6px 6px 0; margin-bottom: 50px;">
     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;">
-      <span style="background: #272725; color: #eedacf; font-size: 10px; font-weight: bold; text-transform: uppercase; padding: 3px 10px; border-radius: 99px;">
-        Razorpay Test Mode
+      <span
+        style="background: #272725; color: #eedacf; font-size: 10px; font-weight: bold; text-transform: uppercase; padding: 3px 10px; border-radius: 99px;">
+        PERSONALIZED PLANNING
       </span>
-      <strong style="font-size: 14px; color: var(--text-dark);">B.Tech Semester-5 PBL Task 5 Demonstration</strong>
+      <strong style="font-size: 14px; color: var(--text-dark);">Your celebration begins here</strong>
     </div>
     <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0;">
-      This portal demonstrates end-to-end payment gateway workflows. Orders are created on the Flask server (`POST /payment/create-order`), executed via the Razorpay test modal, and verified on the backend (`POST /payment/verify`) using cryptographic HMAC-SHA256 hashing. Nominal test fees (₹500, ₹1,500, ₹3,000) are mapped to full wedding tier quotes for live sandbox evaluation.
+      Share a few details with us so we can make your special occasion truly unforgettable. Our team will use these
+      details to coordinate your reservation.
     </p>
   </div>
 
   <!-- Customer Pre-fill Details for Checkout -->
-  <div style="max-width: 860px; margin: 0 auto 50px; background: #ffffff; border: 1px solid #e7ded4; border-radius: 8px; padding: 28px; box-shadow: 0 5px 20px rgba(0,0,0,0.03);">
+  <div
+    style="max-width: 860px; margin: 0 auto 50px; background: #ffffff; border: 1px solid #e7ded4; border-radius: 8px; padding: 28px; box-shadow: 0 5px 20px rgba(0,0,0,0.03);">
     <h3 style="font-size: 22px; margin-bottom: 6px;">1. Client Booking Information</h3>
     <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">
-      These details will be passed to the Razorpay test checkout modal and stored in SQLite.
+      Tell us a little about yourself so we can stay connected throughout your celebration journey.
     </p>
 
     <div class="form-row">
       <div class="form-group" style="margin-bottom: 0;">
         <label class="form-label" for="payCustomerName">Client Name</label>
-        <input type="text" class="form-input" id="payCustomerName" value="{{ session.get('user_name', 'Priya Sharma') }}" required>
+        <input type="text" class="form-input" id="payCustomerName"
+          value="{{ session.get('user_name', 'Priya Sharma') }}" required>
       </div>
       <div class="form-group" style="margin-bottom: 0;">
         <label class="form-label" for="payCustomerEmail">Client Email</label>
-        <input type="email" class="form-input" id="payCustomerEmail" value="{{ session.get('user_email', 'priya@example.com') }}" required>
+        <input type="email" class="form-input" id="payCustomerEmail"
+          value="{{ session.get('user_email', 'priya@example.com') }}" required>
       </div>
       <div class="form-group" style="margin-bottom: 0;">
         <label class="form-label" for="payCustomerPhone">Client Contact</label>
-        <input type="tel" class="form-input" id="payCustomerPhone" value="{{ session.get('user_mobile', '9898989898') }}" required>
+        <input type="tel" class="form-input" id="payCustomerPhone"
+          value="{{ session.get('user_mobile', '9898989898') }}" required>
       </div>
     </div>
   </div>
@@ -59,11 +67,12 @@
   </div>
 
   <div class="packages-grid" style="margin-top: 0;">
-    
+
     <!-- Package 1: Essential -->
     <div class="package-card">
       <div class="package-image-holder">
-        <img src="{{ url_for('static', filename='images/weddings/intimate_vows.jpg') }}" alt="Essential Wedding Package">
+        <img src="{{ url_for('static', filename='images/weddings/intimate_vows.jpg') }}"
+          alt="Essential Wedding Package">
       </div>
       <div class="package-body">
         <span class="eyebrow" style="margin-bottom: 4px;">Tier 01</span>
@@ -81,17 +90,23 @@
           <li>Curated soundscape &amp; classical musicians</li>
           <li>Detailed master vendor itinerary</li>
         </ul>
-        
+
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button type="button" class="button button-dark" id="btn-pay-essentialweddingpackage" onclick="initiateRazorpayPayment('Essential Wedding Package', 500)" style="width: 100%; justify-content: center;">
-            Pay with Razorpay Modal &#8599;
+          <button type="button" class="button button-dark" id="btn-pay-essentialweddingpackage"
+            onclick="initiateRazorpayPayment('Essential Wedding Package', 500)"
+            style="width: 100%; justify-content: center;">
+            Reserve This Package &#8599;
           </button>
           <div style="display: flex; gap: 8px;">
-            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Essential Wedding Package', 500, true)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
-              &#10003; Test Success
+            <button type="button" class="button button-light"
+              onclick="simulatePaymentDirectly('Essential Wedding Package', 500, true)"
+              style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
+              &#10003; Booking Confirmed
             </button>
-            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Essential Wedding Package', 500, false)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
-              &#9888; Test Failure
+            <button type="button" class="button button-light"
+              onclick="simulatePaymentDirectly('Essential Wedding Package', 500, false)"
+              style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
+              &#9888; Need Assistance?
             </button>
           </div>
         </div>
@@ -102,7 +117,8 @@
     <div class="package-card featured">
       <span class="featured-ribbon">Most Popular</span>
       <div class="package-image-holder">
-        <img src="{{ url_for('static', filename='images/weddings/ceremony_garden.jpg') }}" alt="Signature Heritage Package">
+        <img src="{{ url_for('static', filename='images/weddings/ceremony_garden.jpg') }}"
+          alt="Signature Heritage Package">
       </div>
       <div class="package-body">
         <span class="eyebrow" style="margin-bottom: 4px;">Tier 02 · Heritage</span>
@@ -120,17 +136,23 @@
           <li>Sangeet choreographer &amp; DJ production</li>
           <li>Executive planning team of 6 coordinators</li>
         </ul>
-        
+
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button type="button" class="button button-accent" id="btn-pay-signatureheritagepackage" onclick="initiateRazorpayPayment('Signature Heritage Package', 1500)" style="width: 100%; justify-content: center;">
-            Pay with Razorpay Modal &#8599;
+          <button type="button" class="button button-accent" id="btn-pay-signatureheritagepackage"
+            onclick="initiateRazorpayPayment('Signature Heritage Package', 1500)"
+            style="width: 100%; justify-content: center;">
+            Reserve This Package &#8599;
           </button>
           <div style="display: flex; gap: 8px;">
-            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Signature Heritage Package', 1500, true)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
-              &#10003; Test Success
+            <button type="button" class="button button-light"
+              onclick="simulatePaymentDirectly('Signature Heritage Package', 1500, true)"
+              style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
+              &#10003; Booking Confirmed
             </button>
-            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Signature Heritage Package', 1500, false)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
-              &#9888; Test Failure
+            <button type="button" class="button button-light"
+              onclick="simulatePaymentDirectly('Signature Heritage Package', 1500, false)"
+              style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
+              &#9888; Need Assistance?
             </button>
           </div>
         </div>
@@ -140,7 +162,8 @@
     <!-- Package 3: Royal Destination -->
     <div class="package-card">
       <div class="package-image-holder">
-        <img src="{{ url_for('static', filename='images/destinations/udaipur_palace.jpg') }}" alt="Royal Destination Wedding Package">
+        <img src="{{ url_for('static', filename='images/destinations/udaipur_palace.jpg') }}"
+          alt="Royal Destination Wedding Package">
       </div>
       <div class="package-body">
         <span class="eyebrow" style="margin-bottom: 4px;">Tier 03 · Destination</span>
@@ -158,17 +181,23 @@
           <li>High-end drone cinematography &amp; photography team</li>
           <li>Full 12-person senior production concierge</li>
         </ul>
-        
+
         <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button type="button" class="button button-dark" id="btn-pay-royaldestinationpackage" onclick="initiateRazorpayPayment('Royal Destination Package', 3000)" style="width: 100%; justify-content: center;">
-            Pay with Razorpay Modal &#8599;
+          <button type="button" class="button button-dark" id="btn-pay-royaldestinationpackage"
+            onclick="initiateRazorpayPayment('Royal Destination Package', 3000)"
+            style="width: 100%; justify-content: center;">
+            Reserve This Package &#8599;
           </button>
           <div style="display: flex; gap: 8px;">
-            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Royal Destination Package', 3000, true)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
-              &#10003; Test Success
+            <button type="button" class="button button-light"
+              onclick="simulatePaymentDirectly('Royal Destination Package', 3000, true)"
+              style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
+              &#10003; Booking Confirmed
             </button>
-            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Royal Destination Package', 3000, false)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
-              &#9888; Test Failure
+            <button type="button" class="button button-light"
+              onclick="simulatePaymentDirectly('Royal Destination Package', 3000, false)"
+              style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
+              &#9888; Need Assistance?
             </button>
           </div>
         </div>
