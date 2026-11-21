@@ -105,16 +105,6 @@ git remote add origin https://github.com/your‑username/everafter-events.git
 git branch -M main
 git push -u origin main
 ```
-> **Note:** You need a GitHub account and a personal access token (or SSH key) with `repo` scope to push from the command line.
-
----
-
-## 📸 Screenshots
-| Home | Gallery |
-|------|---------|
-| ![Home] (screenshots/image.png) | ![Gallery] (screenshots/gallery.png)|
-
----
 
 ## 🙏 Acknowledgments
 - **Bolt AI** – generated the original React design and Tailwind configuration.
