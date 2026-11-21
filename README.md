@@ -99,9 +99,9 @@ git add .
 git commit -m "Initial release – fully functional EverAfter Events site"
 
 # Create a new repo on GitHub (do this in the GitHub UI) – copy the HTTPS URL
-# Example: https://github.com/NiravGAndhi21/everafter-events.git
+# Example: https://github.com/NiravGandhi21/everafter-events.git
 
-git remote add origin https://github.com/your‑username/everafter-events.git
+git remote add origin https://github.com/NiravGandhi21/everafter-events.git
 git branch -M main
 git push -u origin main
 ```
