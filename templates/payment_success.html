@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Payment Confirmed — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="section-pad" style="min-height: 75vh; display: flex; align-items: center; justify-content: center;">
+  <div style="max-width: 620px; width: 100%; background: #ffffff; border-radius: 8px; border: 1px solid #e2dacd; padding: 45px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.06);">
+    
+    <div style="width: 70px; height: 70px; border-radius: 50%; background: #e8f5e9; color: #2e7d32; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 24px;">
+      &#10003;
+    </div>
+
+    <span class="eyebrow" style="color: #2e7d32; margin-bottom: 8px;">PBL Task 5 · Payment Verified</span>
+    <h1 style="font-size: 36px; margin-bottom: 12px;">Reservation Confirmed</h1>
+    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 30px;">
+      Your Razorpay transaction was successfully authenticated and cryptographically verified on the Flask backend.
+    </p>
+
+    <!-- Receipt Meta Box -->
+    <div style="background: #f8f6f2; border: 1px solid #eee8df; border-radius: 6px; padding: 22px; text-align: left; margin-bottom: 30px;">
+      <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee8df; font-size: 13px;">
+        <span style="color: var(--text-muted);">Package Reserved</span>
+        <strong>{{ payment.package_name if payment else 'Wedding Celebration Package' }}</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee8df; font-size: 13px;">
+        <span style="color: var(--text-muted);">Amount Paid</span>
+        <strong style="color: var(--accent-warm);">₹{{ "%.2f"|format(payment.amount) if payment else '500.00' }} INR</strong>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee8df; font-size: 13px;">
+        <span style="color: var(--text-muted);">Razorpay Order ID</span>
+        <span style="font-family: monospace; font-size: 12px;">{{ payment.order_id if payment else order_id }}</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee8df; font-size: 13px;">
+        <span style="color: var(--text-muted);">Gateway Payment ID</span>
+        <span style="font-family: monospace; font-size: 12px; color: #2e7d32;">{{ payment.payment_id if payment else payment_id }}</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 13px;">
+        <span style="color: var(--text-muted);">Verification Status</span>
+        <span style="color: #2e7d32; font-weight: bold;">HMAC-SHA256 Signature Validated</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="{{ url_for('home') }}" class="button button-dark">Return to Home Page &#8599;</a>
+      <a href="{{ url_for('gallery') }}" class="button button-light">Explore Portfolio &#8594;</a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

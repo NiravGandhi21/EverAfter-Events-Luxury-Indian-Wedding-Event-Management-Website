@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{% block title %}Client Login — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="page-intro" style="padding-bottom: 50px;">
+  <p class="eyebrow">Task 2 &amp; 4 · Client Portal</p>
+  <h1>Welcome back<br><em>to EverAfter.</em></h1>
+  <p class="page-lede">
+    Sign in to access your event dashboard, track itinerary updates, or proceed with verified package demonstrations.
+  </p>
+</section>
+
+<!-- Login Section (Styled Referencing Contact Page Card Design) -->
+<section class="section-pad" style="padding-top: 40px;">
+  <div style="max-width: 640px; margin: 0 auto;">
+    
+    <div class="form-card">
+      <div style="text-align: center; margin-bottom: 30px;">
+        <span class="eyebrow" style="margin-bottom: 6px;">PBL Task 2 &amp; 4</span>
+        <h2 style="font-size: 32px;">Client Sign In</h2>
+        <p style="font-size: 13px; color: var(--text-muted); margin-top: 6px;">
+          Logging in triggers automated SMTP email security notifications according to PBL Task 4.
+        </p>
+      </div>
+
+      <form action="{{ url_for('login') }}" method="POST">
+        
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email Address *</label>
+          <input type="email" class="form-input" id="loginEmail" name="email" placeholder="priya@example.com" required autofocus>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password *</label>
+          <input type="password" class="form-input" id="loginPassword" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 12px; color: var(--text-muted);">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" name="remember" checked>
+            <span>Remember session</span>
+          </label>
+          <span style="color: var(--accent-terracotta);">Task 4 Email Triggered On Submit</span>
+        </div>
+
+        <button type="submit" class="button button-dark" style="width: 100%; justify-content: center;">
+          Secure Sign In &amp; Dispatch Notification &#8599;
+        </button>
+
+        <div style="text-align: center; margin-top: 24px; border-top: 1px solid var(--border-light); padding-top: 18px; font-size: 13px; color: var(--text-muted);">
+          Don&apos;t have an account yet? 
+          <a href="{{ url_for('register') }}" style="color: var(--accent-warm); font-weight: 600; text-decoration: underline; margin-left: 4px;">Register here (Task 2) &#8594;</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Viva Examination Quick Fill Helper -->
+    {% if recent_users %}
+    <div style="margin-top: 30px; background: #ffffff; border: 1px solid #e2dacd; border-radius: 8px; padding: 22px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+        <strong style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-terracotta);">&#9733; Viva Quick-Fill Helper (Registered Database Accounts)</strong>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
+        Click on any registered user below to auto-fill credentials for quick examination testing:
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        {% for u in recent_users %}
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #f8f6f2; border-radius: 4px; font-size: 12px;">
+          <div>
+            <strong>{{ u.full_name }}</strong> <span style="color: #756e67;">({{ u.email }})</span>
+          </div>
+          <button type="button" class="button button-light user-fill-btn" data-email="{{ u.email }}" style="padding: 4px 12px; font-size: 10px;">
+            Select User
+          </button>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Mandatory PBL Task 4: Dispatched Security Email Audit Log for Viva -->
+    <div style="margin-top: 25px; background: #ffffff; border: 1px solid #d4c8b8; border-radius: 8px; padding: 22px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+        <strong style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #2e7d32;">
+          &#9993; Task 4: Dispatched Login Security Emails (SQLite Audit Log)
+        </strong>
+      </div>
+      <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
+        Whenever an account attempts login (valid or invalid), an automated security notification is recorded below. Click <strong>&quot;Preview Email&quot;</strong> to inspect the rendered HTML email:
+      </p>
+
+      {% if recent_emails %}
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        {% for em in recent_emails %}
+        <div style="padding: 12px 14px; background: #fbf9f6; border-left: 3px solid #a36b4f; border-radius: 0 4px 4px 0; font-size: 12px;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+            <strong>{{ em.subject }}</strong>
+            <span style="font-size: 10px; color: #756e67;">{{ em.created_at }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 11px;">
+            <span>To: <strong>{{ em.recipient }}</strong> | Status: <strong>{{ em.status }}</strong></span>
+            <a href="{{ url_for('view_email_body', email_id=em.id) }}" target="_blank" class="button button-light" style="padding: 3px 10px; font-size: 10px;">
+              Preview Full Email &#8599;
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p style="font-size: 12px; color: var(--text-muted); font-style: italic; margin: 0;">
+        No login attempts recorded yet. Submit a login attempt above to generate your first security email record.
+      </p>
+      {% endif %}
+
+      <div style="margin-top: 15px; padding-top: 12px; border-top: 1px solid #eee; font-size: 11px; color: #756e67;">
+        <strong>How to receive emails in your real Gmail inbox:</strong> Open <code>.env</code> in the project folder and set <code>SMTP_USERNAME=your_email@gmail.com</code> and <code>SMTP_PASSWORD=your_16_char_google_app_password</code>.
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var fillButtons = document.querySelectorAll('.user-fill-btn');
+    fillButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var email = this.getAttribute('data-email');
+        var emailInput = document.getElementById('loginEmail');
+        var passwordInput = document.getElementById('loginPassword');
+        if (emailInput) {
+          emailInput.value = email;
+        }
+        if (passwordInput) {
+          passwordInput.focus();
+        }
+      });
+    });
+  });
+</script>
+{% endblock %}

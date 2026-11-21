@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block title %}About Our Studio — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+  <p class="eyebrow">Our Story · 01</p>
+  <h1>A little more<br><em>feeling.</em></h1>
+  <p class="page-lede">
+    EverAfter is a full-service wedding and event studio for people who care about the way a moment feels.
+  </p>
+</section>
+
+<!-- Story Split -->
+<section class="section-pad">
+  <div class="feature-split">
+    <div class="feature-photo-wrapper">
+      <img src="{{ url_for('static', filename='images/receptions/gathered_celebration.jpg') }}" alt="EverAfter studio team celebration">
+      <span class="photo-caption">A gathering in bloom · Est. 2012</span>
+    </div>
+    
+    <div class="feature-copy">
+      <p class="eyebrow">It started with a table</p>
+      <h2>Beautiful things<br>begin with <em>meaning.</em></h2>
+      <p>EverAfter began around a long dinner table in 2012, with a conviction that the most memorable celebrations are never about having more. They are about choosing better — a flower with a provenance, a courtyard with a point of view, a quiet pause before the music begins.</p>
+      <p>Today, our studio designs weddings and celebrations across India and wherever your loved ones gather. Our team is intentionally boutique, accepting only a limited number of commissions each season so every couple receives our dedicated artistry and presence.</p>
+      <a href="{{ url_for('contact') }}" class="text-button">Start a consultation &#8599;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Studio Philosophy / Values -->
+<section class="section-pad section-dark">
+  <p class="eyebrow">02 · What Matters To Us</p>
+  <div class="section-heading" style="margin-bottom: 40px;">
+    <h2>Calm in the<br><em>beautiful chaos.</em></h2>
+  </div>
+  
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+    <div style="border-top: 1px solid var(--border-dark); padding-top: 24px;">
+      <span style="color: var(--accent-copper); font-size: 11px;">01</span>
+      <h3 style="font-size: 24px; margin: 14px 0 10px; color: var(--text-light);">Listen first</h3>
+      <p style="font-size: 13px; color: var(--text-light-muted); line-height: 1.7;">
+        Your story is the purest foundation. We learn what matters to your families before drawing a single floorplan.
+      </p>
+    </div>
+    <div style="border-top: 1px solid var(--border-dark); padding-top: 24px;">
+      <span style="color: var(--accent-copper); font-size: 11px;">02</span>
+      <h3 style="font-size: 24px; margin: 14px 0 10px; color: var(--text-light);">Make it personal</h3>
+      <p style="font-size: 13px; color: var(--text-light-muted); line-height: 1.7;">
+        No two celebrations should ever share the same texture. We design every mandap, menu, and musical cue bespoke.
+      </p>
+    </div>
+    <div style="border-top: 1px solid var(--border-dark); padding-top: 24px;">
+      <span style="color: var(--accent-copper); font-size: 11px;">03</span>
+      <h3 style="font-size: 24px; margin: 14px 0 10px; color: var(--text-light);">Leave room for wonder</h3>
+      <p style="font-size: 13px; color: var(--text-light-muted); line-height: 1.7;">
+        Precision planning is our backbone, but the most unforgettable moments are always the unscripted ones.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Creative Team -->
+<section class="section-pad">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">The people behind the scenes</p>
+      <h2>Small team.<br><em>Big heart.</em></h2>
+    </div>
+  </div>
+  
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="{{ url_for('static', filename='images/team/amara_mehta.jpg') }}" alt="Amara Mehta">
+      <div class="team-card-overlay"></div>
+      <div class="team-card-content">
+        <strong>Amara Mehta</strong>
+        <span>Founder &amp; Creative Director</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="{{ url_for('static', filename='images/team/rohan_kapoor.jpg') }}" alt="Rohan Kapoor">
+      <div class="team-card-overlay"></div>
+      <div class="team-card-content">
+        <strong>Rohan Kapoor</strong>
+        <span>Head of Planning &amp; Production</span>
+      </div>
+    </div>
+    <div class="team-card">
+      <img src="{{ url_for('static', filename='images/team/nisha_jain.jpg') }}" alt="Nisha Jain">
+      <div class="team-card-overlay"></div>
+      <div class="team-card-content">
+        <strong>Nisha Jain</strong>
+        <span>Lead Floral &amp; Spatial Designer</span>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

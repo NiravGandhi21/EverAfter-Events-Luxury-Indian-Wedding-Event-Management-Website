@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% block title %}Celebration Portfolio &amp; Gallery — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+  <p class="eyebrow">The Work · 03</p>
+  <h1>A feeling worth<br><em>remembering.</em></h1>
+  <p class="page-lede">
+    A curated collection of celebrations, palaces and little details that stayed with us long after the last guest went home.
+  </p>
+</section>
+
+<!-- Filter Row -->
+<section class="section-pad">
+  <div class="filter-row">
+    <button class="filter-btn active" data-filter="all">All Celebrations</button>
+    <button class="filter-btn" data-filter="ceremony">Ceremony</button>
+    <button class="filter-btn" data-filter="floral">Florals &amp; Decor</button>
+    <button class="filter-btn" data-filter="destination">Destinations</button>
+    <button class="filter-btn" data-filter="celebration">Banquets &amp; Soirées</button>
+  </div>
+
+  <!-- Gallery Masonry Grid -->
+  <div class="gallery-grid" id="galleryGrid">
+    
+    <!-- Item 1: Large Garden Ceremony -->
+    <div class="gallery-card large" data-category="ceremony" data-title="The Garden Ceremony · Udaipur Palace" data-full-img="{{ url_for('static', filename='images/gallery/g1_garden.jpg') }}">
+      <img src="{{ url_for('static', filename='images/gallery/g1_garden.jpg') }}" alt="Garden Ceremony in Udaipur">
+      <div class="gallery-card-overlay">
+        <div>
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #eedacf;">Ceremony · Udaipur</span>
+          <div class="gallery-card-title">The Garden Ceremony</div>
+        </div>
+        <span style="font-size: 20px;">&#8599;</span>
+      </div>
+    </div>
+
+    <!-- Item 2: Tall Atrium Petals -->
+    <div class="gallery-card tall" data-category="floral" data-title="Petals in the Heritage Atrium" data-full-img="{{ url_for('static', filename='images/gallery/g2_atrium.jpg') }}">
+      <img src="{{ url_for('static', filename='images/gallery/g2_atrium.jpg') }}" alt="Petals in the Atrium">
+      <div class="gallery-card-overlay">
+        <div>
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #eedacf;">Floral · Mandap</span>
+          <div class="gallery-card-title">Petals in the Atrium</div>
+        </div>
+        <span style="font-size: 20px;">&#8599;</span>
+      </div>
+    </div>
+
+    <!-- Item 3: Standard Destination -->
+    <div class="gallery-card" data-category="destination" data-title="A Quiet Shoreline · Goa Sanctuary" data-full-img="{{ url_for('static', filename='images/gallery/g3_shoreline.jpg') }}">
+      <img src="{{ url_for('static', filename='images/gallery/g3_shoreline.jpg') }}" alt="A Quiet Shoreline">
+      <div class="gallery-card-overlay">
+        <div>
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #eedacf;">Destination · Coastal</span>
+          <div class="gallery-card-title">A Quiet Shoreline</div>
+        </div>
+        <span style="font-size: 20px;">&#8599;</span>
+      </div>
+    </div>
+
+    <!-- Item 4: Standard Celebration Dinner -->
+    <div class="gallery-card" data-category="celebration" data-title="The Welcome Dinner · Fort Barwara" data-full-img="{{ url_for('static', filename='images/gallery/g4_dinner.jpg') }}">
+      <img src="{{ url_for('static', filename='images/gallery/g4_dinner.jpg') }}" alt="The Welcome Dinner">
+      <div class="gallery-card-overlay">
+        <div>
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #eedacf;">Celebration · Dinner</span>
+          <div class="gallery-card-title">The Welcome Dinner</div>
+        </div>
+        <span style="font-size: 20px;">&#8599;</span>
+      </div>
+    </div>
+
+    <!-- Item 5: Standard Candlelight -->
+    <div class="gallery-card" data-category="ceremony" data-title="Candlelight Vows · Lake Pichola" data-full-img="{{ url_for('static', filename='images/gallery/g5_candlelight.jpg') }}">
+      <img src="{{ url_for('static', filename='images/gallery/g5_candlelight.jpg') }}" alt="Candlelight Vows">
+      <div class="gallery-card-overlay">
+        <div>
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #eedacf;">Ceremony · Twilight</span>
+          <div class="gallery-card-title">Candlelight Vows</div>
+        </div>
+        <span style="font-size: 20px;">&#8599;</span>
+      </div>
+    </div>
+
+    <!-- Item 6: Large Table in Bloom -->
+    <div class="gallery-card large" data-category="floral" data-title="A Table in Bloom · Sangeet Pavilion" data-full-img="{{ url_for('static', filename='images/gallery/g6_table.jpg') }}">
+      <img src="{{ url_for('static', filename='images/gallery/g6_table.jpg') }}" alt="A Table in Bloom">
+      <div class="gallery-card-overlay">
+        <div>
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #eedacf;">Floral · Tablescape</span>
+          <div class="gallery-card-title">A Table in Bloom</div>
+        </div>
+        <span style="font-size: 20px;">&#8599;</span>
+      </div>
+    </div>
+
+    <!-- Item 7: Tall Destination Sunset -->
+    <div class="gallery-card tall" data-category="destination" data-title="The Afterglow · Golden Hour in Jaipur" data-full-img="{{ url_for('static', filename='images/gallery/g7_sunset.jpg') }}">
+      <img src="{{ url_for('static', filename='images/gallery/g7_sunset.jpg') }}" alt="The Afterglow">
+      <div class="gallery-card-overlay">
+        <div>
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #eedacf;">Destination · Sunset</span>
+          <div class="gallery-card-title">The Afterglow</div>
+        </div>
+        <span style="font-size: 20px;">&#8599;</span>
+      </div>
+    </div>
+
+    <!-- Item 8: Standard Celebration -->
+    <div class="gallery-card" data-category="celebration" data-title="Gathered Together · Sangeet Gala" data-full-img="{{ url_for('static', filename='images/gallery/g8_gathering.jpg') }}">
+      <img src="{{ url_for('static', filename='images/gallery/g8_gathering.jpg') }}" alt="Gathered Together">
+      <div class="gallery-card-overlay">
+        <div>
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #eedacf;">Celebration · Sangeet</span>
+          <div class="gallery-card-title">Gathered Together</div>
+        </div>
+        <span style="font-size: 20px;">&#8599;</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Lightbox Modal Component -->
+<div class="lightbox-modal" id="lightboxModal">
+  <div class="lightbox-content">
+    <button class="lightbox-close-btn" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+    <img src="" alt="Lightbox image" id="lightboxImg">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+{% endblock %}

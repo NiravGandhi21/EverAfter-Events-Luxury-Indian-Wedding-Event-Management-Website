@@ -1,0 +1,180 @@
+{% extends "layout.html" %}
+
+{% block title %}Wedding Packages &amp; Razorpay Payment Demo — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+  <p class="eyebrow">Task 5 · Payment Gateway Integration</p>
+  <h1>Reserve your date &amp;<br><em>celebration package.</em></h1>
+  <p class="page-lede">
+    Demonstrating full-stack Razorpay test mode integration with real-time order generation and server-side HMAC-SHA256 signature verification.
+  </p>
+</section>
+
+<!-- Task 5 Demonstration Section -->
+<section class="section-pad">
+  
+  <!-- Academic Demonstration Notice -->
+  <div style="background: #e9e3db; border-left: 4px solid var(--accent-terracotta); padding: 22px 28px; border-radius: 0 6px 6px 0; margin-bottom: 50px;">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;">
+      <span style="background: #272725; color: #eedacf; font-size: 10px; font-weight: bold; text-transform: uppercase; padding: 3px 10px; border-radius: 99px;">
+        Razorpay Test Mode
+      </span>
+      <strong style="font-size: 14px; color: var(--text-dark);">B.Tech Semester-5 PBL Task 5 Demonstration</strong>
+    </div>
+    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0;">
+      This portal demonstrates end-to-end payment gateway workflows. Orders are created on the Flask server (`POST /payment/create-order`), executed via the Razorpay test modal, and verified on the backend (`POST /payment/verify`) using cryptographic HMAC-SHA256 hashing. Nominal test fees (₹500, ₹1,500, ₹3,000) are mapped to full wedding tier quotes for live sandbox evaluation.
+    </p>
+  </div>
+
+  <!-- Customer Pre-fill Details for Checkout -->
+  <div style="max-width: 860px; margin: 0 auto 50px; background: #ffffff; border: 1px solid #e7ded4; border-radius: 8px; padding: 28px; box-shadow: 0 5px 20px rgba(0,0,0,0.03);">
+    <h3 style="font-size: 22px; margin-bottom: 6px;">1. Client Booking Information</h3>
+    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 20px;">
+      These details will be passed to the Razorpay test checkout modal and stored in SQLite.
+    </p>
+
+    <div class="form-row">
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label" for="payCustomerName">Client Name</label>
+        <input type="text" class="form-input" id="payCustomerName" value="{{ session.get('user_name', 'Priya Sharma') }}" required>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label" for="payCustomerEmail">Client Email</label>
+        <input type="email" class="form-input" id="payCustomerEmail" value="{{ session.get('user_email', 'priya@example.com') }}" required>
+      </div>
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label" for="payCustomerPhone">Client Contact</label>
+        <input type="tel" class="form-input" id="payCustomerPhone" value="{{ session.get('user_mobile', '9898989898') }}" required>
+      </div>
+    </div>
+  </div>
+
+  <!-- Package Cards Grid -->
+  <div class="section-heading" style="margin-bottom: 30px;">
+    <div>
+      <p class="eyebrow">Select A Package</p>
+      <h2>Curated wedding &amp;<br><em>celebration tiers.</em></h2>
+    </div>
+  </div>
+
+  <div class="packages-grid" style="margin-top: 0;">
+    
+    <!-- Package 1: Essential -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/weddings/intimate_vows.jpg') }}" alt="Essential Wedding Package">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 4px;">Tier 01</span>
+        <h3 class="package-name">Essential Wedding Package</h3>
+        <p style="font-size: 13px; color: var(--text-muted);">
+          Thoughtfully tailored for intimate single-day ceremonies, family gatherings, and bespoke vows.
+        </p>
+        <div class="package-price">
+          ₹1,50,000 <small>(Test demo fee: ₹500)</small>
+        </div>
+        <ul class="package-features">
+          <li>Complete single-day ceremony orchestration</li>
+          <li>Artisan mandap floristry &amp; seating design</li>
+          <li>2 Senior coordinators on-site for 12 hours</li>
+          <li>Curated soundscape &amp; classical musicians</li>
+          <li>Detailed master vendor itinerary</li>
+        </ul>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button type="button" class="button button-dark" id="btn-pay-essentialweddingpackage" onclick="initiateRazorpayPayment('Essential Wedding Package', 500)" style="width: 100%; justify-content: center;">
+            Pay with Razorpay Modal &#8599;
+          </button>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Essential Wedding Package', 500, true)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
+              &#10003; Test Success
+            </button>
+            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Essential Wedding Package', 500, false)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
+              &#9888; Test Failure
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package 2: Signature (Featured) -->
+    <div class="package-card featured">
+      <span class="featured-ribbon">Most Popular</span>
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/weddings/ceremony_garden.jpg') }}" alt="Signature Heritage Package">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 4px;">Tier 02 · Heritage</span>
+        <h3 class="package-name">Signature Heritage Package</h3>
+        <p style="font-size: 13px; color: var(--text-muted);">
+          Our most requested 2-day wedding weekend experience, covering Mehendi, Sangeet, and the Royal Wedding.
+        </p>
+        <div class="package-price">
+          ₹3,50,000 <small>(Test demo fee: ₹1,500)</small>
+        </div>
+        <ul class="package-features">
+          <li>2 Full days of multi-event coordination</li>
+          <li>Bespoke architectural mandap &amp; stage builds</li>
+          <li>Comprehensive hospitality desk for out-of-town guests</li>
+          <li>Sangeet choreographer &amp; DJ production</li>
+          <li>Executive planning team of 6 coordinators</li>
+        </ul>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button type="button" class="button button-accent" id="btn-pay-signatureheritagepackage" onclick="initiateRazorpayPayment('Signature Heritage Package', 1500)" style="width: 100%; justify-content: center;">
+            Pay with Razorpay Modal &#8599;
+          </button>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Signature Heritage Package', 1500, true)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
+              &#10003; Test Success
+            </button>
+            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Signature Heritage Package', 1500, false)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
+              &#9888; Test Failure
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Package 3: Royal Destination -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/destinations/udaipur_palace.jpg') }}" alt="Royal Destination Wedding Package">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 4px;">Tier 03 · Destination</span>
+        <h3 class="package-name">Royal Destination Package</h3>
+        <p style="font-size: 13px; color: var(--text-muted);">
+          An opulent 3-day palace immersion in Udaipur, Jaipur, or Jodhpur for extraordinary grand weddings.
+        </p>
+        <div class="package-price">
+          ₹7,50,000 <small>(Test demo fee: ₹3,000)</small>
+        </div>
+        <ul class="package-features">
+          <li>3-Day palace sanctuary experience orchestration</li>
+          <li>Airport charter escort &amp; VIP royal welcome</li>
+          <li>Fine-dining menu curation with celebrity chefs</li>
+          <li>High-end drone cinematography &amp; photography team</li>
+          <li>Full 12-person senior production concierge</li>
+        </ul>
+        
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <button type="button" class="button button-dark" id="btn-pay-royaldestinationpackage" onclick="initiateRazorpayPayment('Royal Destination Package', 3000)" style="width: 100%; justify-content: center;">
+            Pay with Razorpay Modal &#8599;
+          </button>
+          <div style="display: flex; gap: 8px;">
+            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Royal Destination Package', 3000, true)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px;">
+              &#10003; Test Success
+            </button>
+            <button type="button" class="button button-light" onclick="simulatePaymentDirectly('Royal Destination Package', 3000, false)" style="flex: 1; justify-content: center; font-size: 10px; padding: 10px 6px; color: #c0392b;">
+              &#9888; Test Failure
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

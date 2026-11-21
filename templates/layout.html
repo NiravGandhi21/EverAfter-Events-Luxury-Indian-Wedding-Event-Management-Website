@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}EverAfter Events — Luxury Wedding & Event Studio{% endblock %}</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239a7966'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+  
+  <!-- EverAfter Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/everafter.css') }}">
+  
+  <!-- Razorpay Checkout SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header {% if active_page != 'home' %}header-solid{% endif %}">
+    <a href="{{ url_for('home') }}" class="wordmark" aria-label="EverAfter Events Home">
+      <span>Ever</span><em>After</em>
+      <small>Events &amp; Celebrations</small>
+    </a>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav" id="mainNav">
+      <a href="{{ url_for('home') }}" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
+      <a href="{{ url_for('about') }}" class="{% if active_page == 'about' %}active{% endif %}">About</a>
+      <a href="{{ url_for('services') }}" class="{% if active_page == 'services' %}active{% endif %}">Services</a>
+      <a href="{{ url_for('gallery') }}" class="{% if active_page == 'gallery' %}active{% endif %}">Gallery</a>
+      <a href="{{ url_for('blog') }}" class="{% if active_page == 'blog' %}active{% endif %}">Journal</a>
+      <a href="{{ url_for('payment') }}" class="{% if active_page == 'payment' %}active{% endif %}">Packages &amp; Pay</a>
+      <a href="{{ url_for('contact') }}" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a>
+      
+      <!-- User Authentication Controls -->
+      <div class="header-user-status">
+        {% if session.get('user_id') %}
+          <span class="user-badge">&#9679; {{ session.get('user_name', 'Client') }}</span>
+          <a href="{{ url_for('logout') }}" class="nav-cta" style="border-color: rgba(220,53,69,0.5);">Logout</a>
+        {% else %}
+          <a href="{{ url_for('login') }}" class="{% if active_page == 'login' %}active{% endif %}">Login</a>
+          <a href="{{ url_for('register') }}" class="nav-cta">Register</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    <!-- Mobile Hamburger Toggle -->
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">&#9776;</button>
+  </header>
+
+  <!-- Flash Message Container -->
+  <div class="flash-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-alert {{ category }}">
+            <span>{{ message | safe }}</span>
+            <button class="flash-close" onclick="this.parentElement.remove();">&times;</button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <!-- Page Body Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow" style="color: var(--accent-copper);">EverAfter Events · Studio</p>
+        <h2>Let&apos;s make<br><em>something beautiful.</em></h2>
+      </div>
+      <a href="{{ url_for('contact') }}" class="circle-arrow-link" aria-label="Start wedding consultation">&#8599;</a>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        <strong>E/A</strong> <span style="margin-left: 8px; color: var(--accent-terracotta);">EST. 2012 · VADODARA &amp; UDAIPUR</span>
+      </div>
+      <div class="footer-links">
+        <a href="{{ url_for('about') }}">Our Story</a>
+        <a href="{{ url_for('services') }}">Services</a>
+        <a href="{{ url_for('gallery') }}">The Work</a>
+        <a href="{{ url_for('payment') }}">Packages (Task 5)</a>
+        <a href="{{ url_for('contact') }}">Inquire</a>
+      </div>
+      <div style="text-align: right;">
+        &copy; 2026 EverAfter Events. B.Tech Semester-5 PBL Python Framework.
+      </div>
+    </div>
+  </footer>
+
+  <!-- EverAfter Javascript -->
+  <script src="{{ url_for('static', filename='js/everafter.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

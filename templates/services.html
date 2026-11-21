@@ -1,0 +1,209 @@
+{% extends "layout.html" %}
+
+{% block title %}Our Services — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+  <p class="eyebrow">What We Offer · 02</p>
+  <h1>Conceived with intention,<br><em>executed with grace.</em></h1>
+  <p class="page-lede">
+    Nine comprehensive event management and planning services tailored for extraordinary Indian celebrations.
+  </p>
+</section>
+
+<!-- 9 Services Grid -->
+<section class="section-pad">
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+    
+    <!-- 1. Full-Service Planning -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/full_planning.jpg') }}" alt="Full-Service Wedding Planning">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 01</span>
+        <h3 class="package-name">Full-Service Wedding Planning</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Complete end-to-end orchestration from the earliest conceptual moodboards to the final farewell brunch.
+        </p>
+        <ul class="package-features">
+          <li>Budget management &amp; allocation</li>
+          <li>Vendor selection &amp; contract negotiation</li>
+          <li>Timeline drafting &amp; rehearsal curation</li>
+          <li>Dedicated on-site executive team</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Planning &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 2. Destination Weddings -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/destination.jpg') }}" alt="Destination Weddings">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 02</span>
+        <h3 class="package-name">Destination Weddings</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Heritage palaces of Udaipur, royal forts of Jaipur, beachside sanctuaries of Goa, and international destinations.
+        </p>
+        <ul class="package-features">
+          <li>Palace venue scouting &amp; licensing</li>
+          <li>Guest hospitality &amp; hotel room blocks</li>
+          <li>Airport charter transfers &amp; concierge</li>
+          <li>Local artisan &amp; culinary partnerships</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Destination &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 3. Engagement Ceremonies -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/engagement.jpg') }}" alt="Engagement Ceremonies">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 03</span>
+        <h3 class="package-name">Engagement Ceremonies</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Intimate ring ceremonies, sagai rituals, and celebratory cocktail soirees marking the first formal step.
+        </p>
+        <ul class="package-features">
+          <li>Curated ring ceremony staging</li>
+          <li>Bespoke cocktail bar &amp; mixology</li>
+          <li>Acoustic musical performances</li>
+          <li>Custom invitation suite design</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Engagement &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 4. Reception Management -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/reception.jpg') }}" alt="Reception Management">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 04</span>
+        <h3 class="package-name">Reception Management</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Grand post-wedding banquets, formal sit-down dinners, and high-energy gala nights with seamless crowd flow.
+        </p>
+        <ul class="package-features">
+          <li>Elevated stage &amp; backdrop design</li>
+          <li>VIP protocol &amp; receiving line handling</li>
+          <li>Choreographed couple grand entrance</li>
+          <li>Full audiovisual &amp; lighting engineering</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Reception &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 5. Birthday Celebrations -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/birthday.jpg') }}" alt="Milestone Birthday Celebrations">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 05</span>
+        <h3 class="package-name">Milestone Birthday Celebrations</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Curated private celebrations, silver/golden jubilee anniversaries, and luxury themed birthday dinners.
+        </p>
+        <ul class="package-features">
+          <li>Thematic spatial installations</li>
+          <li>Personalized nostalgic retrospectives</li>
+          <li>Custom cake &amp; dessert staging</li>
+          <li>Interactive entertainment &amp; DJs</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Celebration &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 6. Corporate Events -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/corporate.jpg') }}" alt="Corporate Events">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 06</span>
+        <h3 class="package-name">Corporate Galas &amp; Summits</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Executive conferences, brand launches, annual award galas, and VIP corporate retreats.
+        </p>
+        <ul class="package-features">
+          <li>Keynote stage &amp; LED screen rigging</li>
+          <li>Corporate hospitality &amp; registration desks</li>
+          <li>Award trophy &amp; citation coordination</li>
+          <li>Media &amp; press conference management</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Corporate &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 7. Wedding Decoration & Florals -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/decoration.jpg') }}" alt="Wedding Decoration">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 07</span>
+        <h3 class="package-name">Floral &amp; Mandap Decoration</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Architectural mandaps, botanical tablescapes, traditional marigold cascades, and ambient candlelit pavilions.
+        </p>
+        <ul class="package-features">
+          <li>3D spatial rendering &amp; mood boards</li>
+          <li>Exotic &amp; seasonal floral procurement</li>
+          <li>Handmade fabric draping &amp; canopies</li>
+          <li>Custom lighting &amp; fairy-light canopies</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Decor &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 8. Photography & Cinematography -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/photography.jpg') }}" alt="Photography and Videography">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 08</span>
+        <h3 class="package-name">Photography &amp; Cinematography</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Editorial photojournalism, cinematic wedding films, drone cinematography, and heirloom fine-art print albums.
+        </p>
+        <ul class="package-features">
+          <li>Award-winning candid lead photographers</li>
+          <li>4K cinematic teaser &amp; feature documentary</li>
+          <li>Same-day edit reel for reception</li>
+          <li>Hand-bound leather archival albums</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Visuals &#8599;</a>
+      </div>
+    </div>
+
+    <!-- 9. Catering & Hospitality -->
+    <div class="package-card">
+      <div class="package-image-holder">
+        <img src="{{ url_for('static', filename='images/services/catering.jpg') }}" alt="Catering and Hospitality">
+      </div>
+      <div class="package-body">
+        <span class="eyebrow" style="margin-bottom: 6px;">Service 09</span>
+        <h3 class="package-name">Catering &amp; Royal Hospitality</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Royal multi-course thalis, international live gourmet counters, traditional sweetmakers, and immaculate butler service.
+        </p>
+        <ul class="package-features">
+          <li>Custom regional &amp; international menu curation</li>
+          <li>Master chefs &amp; traditional Maharajs</li>
+          <li>Trained liveried hospitality attendants</li>
+          <li>Artisanal baristas &amp; tea sommeliers</li>
+        </ul>
+        <a href="{{ url_for('contact') }}" class="button button-dark" style="text-align: center; justify-content: center;">Inquire About Catering &#8599;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

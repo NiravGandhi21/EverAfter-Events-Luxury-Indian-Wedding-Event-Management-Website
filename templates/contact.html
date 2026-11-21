@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% block title %}Contact &amp; Inquiries — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+  <p class="eyebrow">Let&apos;s Talk · 04</p>
+  <h1>Your day starts<br><em>here.</em></h1>
+  <p class="page-lede">
+    Tell us a little about what you are imagining. We accept a limited number of celebration commissions each season to ensure uncompromising devotion to every story.
+  </p>
+</section>
+
+<!-- Contact Layout (Reference UI for Task 2 Login & Register) -->
+<section class="section-pad">
+  <div class="feature-split" style="align-items: start;">
+    
+    <!-- Contact Info Column -->
+    <div>
+      <p class="eyebrow">Find Us Here</p>
+      <h2 style="margin-bottom: 30px;">Let&apos;s make<br><em>some magic.</em></h2>
+      
+      <div style="border-top: 1px solid var(--border-light); margin-top: 20px;">
+        <div style="padding: 18px 0; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 16px;">
+          <span style="color: var(--accent-terracotta); font-size: 16px;">&#9993;</span>
+          <div>
+            <strong style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Email Concierge</strong>
+            <span style="font-size: 13px;">hello@everafter.events</span>
+          </div>
+        </div>
+
+        <div style="padding: 18px 0; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 16px;">
+          <span style="color: var(--accent-terracotta); font-size: 16px;">&#9742;</span>
+          <div>
+            <strong style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Direct Consultation</strong>
+            <span style="font-size: 13px;">+91 98200 41212 / +91 98989 89898</span>
+          </div>
+        </div>
+
+        <div style="padding: 18px 0; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 16px;">
+          <span style="color: var(--accent-terracotta); font-size: 16px;">&#9873;</span>
+          <div>
+            <strong style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Design Studios</strong>
+            <span style="font-size: 13px;">Vadodara &amp; Udaipur, India</span>
+          </div>
+        </div>
+
+        <div style="padding: 18px 0; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; gap: 16px;">
+          <span style="color: var(--accent-terracotta); font-size: 16px;">&#9782;</span>
+          <div>
+            <strong style="display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted);">Studio Hours</strong>
+            <span style="font-size: 13px;">Mon–Fri · 10:00 AM – 6:30 PM IST</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 36px; padding: 22px; background: #dfd2c2; border-radius: 6px;">
+        <span style="font-size: 18px; color: var(--accent-terracotta);">&#10022;</span>
+        <p style="font-size: 12px; color: #5a524b; line-height: 1.6; margin-top: 8px;">
+          <strong>PBL Task 2 Reference Notice:</strong> This contact form card serves as the master structural and stylistic reference for our separate Login and Registration modules.
+        </p>
+      </div>
+    </div>
+
+    <!-- Contact Form Card -->
+    <div class="form-card">
+      <span class="eyebrow" style="margin-bottom: 8px;">Inquiry Submission</span>
+      <h3 style="font-size: 26px; margin-bottom: 24px;">Send us your celebration vision</h3>
+      
+      <form action="{{ url_for('contact') }}" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">My name is *</label>
+            <input type="text" class="form-input" id="name" name="name" placeholder="Priya Sharma" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">You can email me at *</label>
+            <input type="email" class="form-input" id="email" name="email" placeholder="priya@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="mobile">Mobile number *</label>
+            <input type="tel" class="form-input" id="mobile" name="mobile" placeholder="9820012345" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="event_type">We&apos;re planning a *</label>
+            <select class="form-select" id="event_type" name="event_type">
+              <option value="Wedding celebration">Wedding celebration</option>
+              <option value="Destination wedding">Destination wedding</option>
+              <option value="Engagement ceremony">Engagement ceremony</option>
+              <option value="Reception gala">Reception gala</option>
+              <option value="Intimate celebration">Intimate celebration</option>
+              <option value="Corporate event">Corporate event</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="event_date">Approximate Date</label>
+            <input type="date" class="form-input" id="event_date" name="event_date">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="budget">Estimated Budget</label>
+            <select class="form-select" id="budget" name="budget">
+              <option value="₹15,00,000 - ₹30,00,000">₹15,00,000 – ₹30,00,000</option>
+              <option value="₹30,00,000 - ₹60,00,000">₹30,00,000 – ₹60,00,000</option>
+              <option value="₹60,00,000 - ₹1,50,00,000">₹60,00,000 – ₹1,50,00,000</option>
+              <option value="₹1,50,00,000+">₹1,50,00,000+ (Royal Scale)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="guest_count">Estimated Guest Count</label>
+          <input type="text" class="form-input" id="guest_count" name="guest_count" placeholder="e.g. 250 guests">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Tell us everything *</label>
+          <textarea class="form-textarea" id="message" name="message" rows="4" placeholder="A little about you, your families, and the emotional mood you wish to curate..." required></textarea>
+        </div>
+
+        <button type="submit" class="button button-dark" style="width: 100%; justify-content: center;">
+          Send Inquiry To Our Studio &#8599;
+        </button>
+      </form>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

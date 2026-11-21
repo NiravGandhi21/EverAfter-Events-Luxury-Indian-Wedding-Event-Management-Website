@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: everafter-events
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: RAZORPAY_KEY_ID
+        value: rzp_test_60v2W0km5tB9fH
+      - key: RAZORPAY_KEY_SECRET
+        value: test_secret_everafter_2026
+      - key: RAZORPAY_CURRENCY
+        value: INR

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Internal Server Error — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="section-pad" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center;">
+  <div>
+    <p class="eyebrow">Error 500</p>
+    <h1 style="font-size: clamp(48px, 7vw, 84px); margin-bottom: 18px;">Something went wrong.</h1>
+    <p style="font-size: 15px; color: var(--text-muted); max-width: 480px; margin: 0 auto 30px;">
+      An unexpected internal error occurred. Our engineering team has been notified.
+    </p>
+    <a href="{{ url_for('home') }}" class="button button-dark">Return to Home Page &#8599;</a>
+  </div>
+</section>
+{% endblock %}

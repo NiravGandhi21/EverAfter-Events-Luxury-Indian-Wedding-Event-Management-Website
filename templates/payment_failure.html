@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}Payment Failed — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="section-pad" style="min-height: 75vh; display: flex; align-items: center; justify-content: center;">
+  <div style="max-width: 600px; width: 100%; background: #ffffff; border-radius: 8px; border: 1px solid #fadbd8; padding: 45px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.06);">
+    
+    <div style="width: 70px; height: 70px; border-radius: 50%; background: #fdedec; color: #c0392b; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 24px;">
+      &#9888;
+    </div>
+
+    <span class="eyebrow" style="color: #c0392b; margin-bottom: 8px;">PBL Task 5 · Payment Alert</span>
+    <h1 style="font-size: 36px; margin-bottom: 12px;">Payment Unsuccessful</h1>
+    <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 28px;">
+      The transaction could not be completed or the signature verification did not match the expected cryptographic digest.
+    </p>
+
+    <!-- Error Detail Box -->
+    <div style="background: #fdf5f5; border: 1px solid #fadbd8; border-radius: 6px; padding: 20px; text-align: left; margin-bottom: 30px;">
+      <div style="display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px;">
+        <span style="color: var(--text-muted);">Reported Reason:</span>
+        <strong style="color: #c0392b;">{{ reason or 'Payment rejected or canceled by client' }}</strong>
+      </div>
+      {% if order_id %}
+      <div style="display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px;">
+        <span style="color: var(--text-muted);">Associated Order ID:</span>
+        <span style="font-family: monospace; font-size: 12px;">{{ order_id }}</span>
+      </div>
+      {% endif %}
+      <div style="display: flex; justify-content: space-between; padding: 6px 0; font-size: 13px;">
+        <span style="color: var(--text-muted);">Security Check:</span>
+        <span>Payment status recorded as &apos;failed&apos; in SQLite</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="{{ url_for('payment') }}" class="button button-dark">Try Again / Select Package &#8599;</a>
+      <a href="{{ url_for('contact') }}" class="button button-light">Contact Concierge &#8594;</a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

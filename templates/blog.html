@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block title %}The Journal — EverAfter Events{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+  <p class="eyebrow">The Journal · 05</p>
+  <h1>Notes from<br><em>the heart.</em></h1>
+  <p class="page-lede">
+    Ideas, advice and inspiration for crafting celebrations that feel unmistakably, beautifully yours.
+  </p>
+</section>
+
+<!-- Featured Story -->
+<section class="section-pad">
+  <div class="feature-split">
+    <div class="feature-photo-wrapper">
+      <img src="{{ url_for('static', filename='images/blog/blog_feature.jpg') }}" alt="Featured EverAfter Journal Post">
+      <span class="photo-caption">The EverAfter Edit · Issue 01</span>
+    </div>
+    <div class="feature-copy">
+      <p class="eyebrow">Featured Story · Planning</p>
+      <h2>The beauty of a<br><em>well-held moment.</em></h2>
+      <p>
+        There is an art to making space for a celebration — and a quiet confidence in knowing when to let the room do the talking. When couples strip away external pressures and focus on authentic hospitality, magic follows.
+      </p>
+      <a href="{{ url_for('blog_post', slug='how-to-plan-a-wedding-that-feels-like-you') }}" class="button button-dark">Read The Story &#8599;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Search & Category Filters -->
+<section class="section-pad" style="padding-top: 0;">
+  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 24px; margin-bottom: 40px; flex-wrap: wrap; gap: 20px;">
+    
+    <div class="filter-row" style="margin-bottom: 0;">
+      <a href="{{ url_for('blog') }}" class="filter-btn {% if not current_category or current_category == 'all' %}active{% endif %}">All Articles</a>
+      <a href="{{ url_for('blog', category='The Guide') }}" class="filter-btn {% if current_category == 'The Guide' %}active{% endif %}">The Guide</a>
+      <a href="{{ url_for('blog', category='Journeys') }}" class="filter-btn {% if current_category == 'Journeys' %}active{% endif %}">Journeys</a>
+      <a href="{{ url_for('blog', category='Details') }}" class="filter-btn {% if current_category == 'Details' %}active{% endif %}">Details</a>
+    </div>
+
+    <!-- Search Form -->
+    <form action="{{ url_for('blog') }}" method="GET" style="display: flex; align-items: center; border-bottom: 1px solid var(--accent-terracotta);">
+      <input type="text" name="q" value="{{ search_query or '' }}" placeholder="Search journal articles..." style="border: 0; outline: none; background: transparent; padding: 8px 12px; font-size: 13px;">
+      <button type="submit" style="color: var(--accent-terracotta); padding: 8px;">&#128269;</button>
+    </form>
+  </div>
+
+  <!-- Blog Posts Grid -->
+  {% if posts %}
+  <div class="blog-grid" style="margin-top: 0;">
+    {% for post in posts %}
+    <article class="blog-card">
+      <div class="blog-card-photo">
+        <img src="{{ url_for('static', filename=post.image_url) }}" alt="{{ post.title }}">
+      </div>
+      <p class="eyebrow" style="margin-bottom: 8px;">{{ post.category }} · {{ post.published_at }}</p>
+      <h3 style="font-size: 24px; line-height: 1.2;"><a href="{{ url_for('blog_post', slug=post.slug) }}">{{ post.title }}</a></h3>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px; line-height: 1.6;">
+        {{ post.excerpt }}
+      </p>
+      <a href="{{ url_for('blog_post', slug=post.slug) }}" class="text-button">Read Full Article &#8594;</a>
+    </article>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="text-align: center; padding: 60px 20px;">
+    <h3 style="font-size: 24px; color: var(--text-muted);">No articles found matching your criteria.</h3>
+    <a href="{{ url_for('blog') }}" class="button button-dark" style="margin-top: 20px;">Reset Search</a>
+  </div>
+  {% endif %}
+</section>
+
+<!-- Newsletter Subscribe -->
+<section class="section-pad section-dark">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: center;">
+    <div>
+      <p class="eyebrow">A Note, Now and Then</p>
+      <h2>Join our <em>journal.</em></h2>
+    </div>
+    <div>
+      <p style="font-size: 13px; color: var(--text-light-muted); margin-bottom: 24px;">
+        Thoughtful ideas for meaningful celebrations, sent periodically to your inbox. No noise, just inspiration.
+      </p>
+      <div style="display: flex; border-bottom: 1px solid var(--accent-copper); padding-bottom: 8px;">
+        <input type="email" placeholder="Your email address" style="flex: 1; border: 0; outline: none; background: transparent; color: var(--text-light); font-size: 13px;">
+        <button class="button button-light" style="padding: 8px 20px; font-size: 11px;" onclick="alert('Thank you for subscribing to the EverAfter Journal.');">Subscribe &#8599;</button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
