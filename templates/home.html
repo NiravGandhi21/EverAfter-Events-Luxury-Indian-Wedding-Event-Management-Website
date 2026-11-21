@@ -5,13 +5,15 @@
 {% block content %}
 <!-- Homepage Hero Section -->
 <section class="hero">
-  <img src="{{ url_for('static', filename='images/hero/hero_mandap.jpg') }}" alt="Luxury Indian Mandap with floral decoration" class="hero-bg-photo">
+  <img src="{{ url_for('static', filename='images/hero/hero_mandap.jpg') }}"
+    alt="Luxury Indian Mandap with floral decoration" class="hero-bg-photo">
   <div class="hero-overlay"></div>
-  
+
   <div class="hero-copy">
     <p class="eyebrow" style="color: var(--accent-copper);">Wedding &amp; event studio · since 2012</p>
     <h1>Where your<br><em>forever</em> begins.</h1>
-    <p class="hero-intro">We compose celebrations with a little more feeling, a little more beauty, and all of the meaning.</p>
+    <p class="hero-intro">We compose celebrations with a little more feeling, a little more beauty, and all of the
+      meaning.</p>
     <div class="hero-actions">
       <a href="{{ url_for('contact') }}" class="button button-light">Plan Your Wedding &#8599;</a>
       <a href="{{ url_for('gallery') }}" class="text-button light-text">Explore Our Work &#8594;</a>
@@ -26,27 +28,28 @@
     <div class="reg-welcome-title">
       <span class="reg-badge">&#10003; Registration Record</span>
       <h3>Welcome, <em>{{ registered_user.full_name if registered_user else session.get('user_name') }}</em></h3>
-      <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
-        Your profile details have been successfully written to the SQLite database and loaded dynamically onto the Home page.
-      </p>
     </div>
-    
+
     <div class="reg-user-details-grid">
       <div class="reg-detail-item">
         <span class="reg-detail-label">Client Name</span>
-        <span class="reg-detail-value">{{ registered_user.full_name if registered_user else session.get('user_name') }}</span>
+        <span class="reg-detail-value">{{ registered_user.full_name if registered_user else session.get('user_name')
+          }}</span>
       </div>
       <div class="reg-detail-item">
         <span class="reg-detail-label">Registered Email</span>
-        <span class="reg-detail-value">{{ registered_user.email if registered_user else session.get('user_email') }}</span>
+        <span class="reg-detail-value">{{ registered_user.email if registered_user else session.get('user_email')
+          }}</span>
       </div>
       <div class="reg-detail-item">
         <span class="reg-detail-label">Mobile Contact</span>
-        <span class="reg-detail-value">{{ registered_user.mobile if registered_user else session.get('user_mobile', 'N/A') }}</span>
+        <span class="reg-detail-value">{{ registered_user.mobile if registered_user else session.get('user_mobile',
+          'N/A') }}</span>
       </div>
       <div class="reg-detail-item">
         <span class="reg-detail-label">City / Destination</span>
-        <span class="reg-detail-value">{{ registered_user.city if registered_user and registered_user.city else session.get('user_city', 'Vadodara') }}</span>
+        <span class="reg-detail-value">{{ registered_user.city if registered_user and registered_user.city else
+          session.get('user_city', 'Vadodara') }}</span>
       </div>
       <div class="reg-detail-item">
         <span class="reg-detail-label">Database Status</span>
@@ -65,7 +68,8 @@
       <h2>Thoughtful by<br><em>nature.</em></h2>
     </div>
     <div class="intro-copy">
-      <p>We believe the best celebrations are the ones that feel like home — personal, artful and entirely yours. From the first sketch to the final toast, we bring a calm, considered energy to every beautiful detail.</p>
+      <p>We believe the best celebrations are the ones that feel like home — personal, artful and entirely yours. From
+        the first sketch to the final toast, we bring a calm, considered energy to every beautiful detail.</p>
       <a href="{{ url_for('about') }}" class="text-button">Discover our story &#8599;</a>
     </div>
   </div>
@@ -80,10 +84,11 @@
     </div>
     <a href="{{ url_for('services') }}" class="text-button light-text">Explore All 9 Services &#8599;</a>
   </div>
-  
+
   <div class="service-grid">
     <div class="service-card">
-      <img src="{{ url_for('static', filename='images/services/full_planning.jpg') }}" alt="Full-service weddings" class="service-card-photo">
+      <img src="{{ url_for('static', filename='images/services/full_planning.jpg') }}" alt="Full-service weddings"
+        class="service-card-photo">
       <div class="service-card-content">
         <span class="service-card-number">01</span>
         <h3>Full-service weddings</h3>
@@ -93,7 +98,8 @@
     </div>
 
     <div class="service-card">
-      <img src="{{ url_for('static', filename='images/services/destination.jpg') }}" alt="Destination celebrations" class="service-card-photo">
+      <img src="{{ url_for('static', filename='images/services/destination.jpg') }}" alt="Destination celebrations"
+        class="service-card-photo">
       <div class="service-card-content">
         <span class="service-card-number">02</span>
         <h3>Destination weddings</h3>
@@ -103,7 +109,8 @@
     </div>
 
     <div class="service-card">
-      <img src="{{ url_for('static', filename='images/decorations/floral_mandap.jpg') }}" alt="Design and florals" class="service-card-photo">
+      <img src="{{ url_for('static', filename='images/decorations/floral_mandap.jpg') }}" alt="Design and florals"
+        class="service-card-photo">
       <div class="service-card-content">
         <span class="service-card-number">03</span>
         <h3>Design &amp; florals</h3>
@@ -113,7 +120,8 @@
     </div>
 
     <div class="service-card">
-      <img src="{{ url_for('static', filename='images/receptions/candlelight_dinner.jpg') }}" alt="Intimate celebrations" class="service-card-photo">
+      <img src="{{ url_for('static', filename='images/receptions/candlelight_dinner.jpg') }}"
+        alt="Intimate celebrations" class="service-card-photo">
       <div class="service-card-content">
         <span class="service-card-number">04</span>
         <h3>Intimate gatherings</h3>
@@ -128,14 +136,17 @@
 <section class="section-pad">
   <div class="feature-split">
     <div class="feature-photo-wrapper">
-      <img src="{{ url_for('static', filename='images/weddings/ceremony_garden.jpg') }}" alt="Garden wedding ceremony in Udaipur">
+      <img src="{{ url_for('static', filename='images/weddings/ceremony_garden.jpg') }}"
+        alt="Garden wedding ceremony in Udaipur">
       <span class="photo-caption">The Heritage Ceremony · Udaipur</span>
     </div>
     <div class="feature-copy">
       <p class="eyebrow">Made for your moment</p>
       <h2>Every celebration<br>has a <em>story.</em></h2>
-      <p>Our work lives between the beautifully planned and the wonderfully unexpected. We listen closely, design intentionally and make room for the kind of moments you could never script.</p>
-      <p>Whether orchestrating a 700-guest royal wedding at Jagmandir Island Palace or a 60-guest candlelit dinner in a private haveli, our studio brings calm mastery to the art of gathering.</p>
+      <p>Our work lives between the beautifully planned and the wonderfully unexpected. We listen closely, design
+        intentionally and make room for the kind of moments you could never script.</p>
+      <p>Whether orchestrating a 700-guest royal wedding at Jagmandir Island Palace or a 60-guest candlelit dinner in a
+        private haveli, our studio brings calm mastery to the art of gathering.</p>
       <a href="{{ url_for('gallery') }}" class="text-button">See the celebration gallery &#8599;</a>
     </div>
   </div>
@@ -150,7 +161,7 @@
     </div>
     <a href="{{ url_for('gallery') }}" class="text-button">View full gallery &#8599;</a>
   </div>
-  
+
   <div class="preview-grid">
     <div class="preview-item">
       <img src="{{ url_for('static', filename='images/decorations/atrium_petals.jpg') }}" alt="Floral decoration">
@@ -162,7 +173,8 @@
       <img src="{{ url_for('static', filename='images/decorations/table_bloom.jpg') }}" alt="Banquet floral design">
     </div>
     <div class="preview-item">
-      <img src="{{ url_for('static', filename='images/weddings/ceremony_candlelight.jpg') }}" alt="Candlelight wedding vows">
+      <img src="{{ url_for('static', filename='images/weddings/ceremony_candlelight.jpg') }}"
+        alt="Candlelight wedding vows">
     </div>
   </div>
 </section>
@@ -185,7 +197,7 @@
     </div>
     <a href="{{ url_for('blog') }}" class="text-button">Read the journal &#8599;</a>
   </div>
-  
+
   <div class="journal-list">
     {% for post in featured_posts %}
     <a href="{{ url_for('blog_post', slug=post.slug) }}" class="journal-row">
@@ -200,11 +212,10 @@
 
 <!-- Section 07: Packages & Payment CTA -->
 <section class="section-pad section-dark" style="text-align: center;">
-  <p class="eyebrow">Task 5 Demonstration</p>
-  <h2 style="max-width: 650px; margin: 0 auto 24px;">Explore our curated wedding packages &amp; reserve your date.</h2>
+  <h2 style="max-width: 650px; margin: 0 auto 24px;">Our Curated Wedding Packages</h2>
   <p style="max-width: 500px; margin: 0 auto 36px; color: var(--text-light-muted); font-size: 14px;">
-    Experience our verified Razorpay test payment integration with instant server-side signature validation.
+    Choose a package that matches your dream celebration. Simple pricing, transparent details, and a secure Razorpay payment gateway.
   </p>
-  <a href="{{ url_for('payment') }}" class="button button-light">View Packages &amp; Test Payment &#8599;</a>
+  <a href="{{ url_for('payment') }}" class="button button-light">View Packages &amp; Book Now &#8599;</a>
 </section>
 {% endblock %}
